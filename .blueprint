@@ -1,0 +1,20 @@
+created:
+    - database/factories/Models/CategoryFactory.php
+    - database/factories/Models/TemplateFactory.php
+    - database/factories/Models/OrderFactory.php
+    - database/migrations/2021_05_18_184546_create_categories_table.php
+    - database/migrations/2021_05_18_184547_create_templates_table.php
+    - database/migrations/2021_05_18_184548_create_orders_table.php
+    - app/Models/Category.php
+    - app/Models/Template.php
+    - app/Models/Order.php
+    - database/seeders/CategorySeeder.php
+    - database/seeders/TemplateSeeder.php
+    - database/seeders/OrderSeeder.php
+models:
+    Category: { title: string, parent_id: 'id foreign:categories nullable', relationships: { hasMany: Template } }
+    Template: { title: string, category_id: 'id foreign', link: string, img_preview: string, img_full: string, relationships: { belongsTo: Category } }
+    Order: { user_name: string, user_phone: string, template_id: 'id foreign', date: date, relationships: { belongsTo: Template } }
+    Models\Category: { title: string, parent_id: 'id foreign:categories nullable', relationships: { hasMany: Template } }
+    Models\Template: { title: string, category_id: 'id foreign', link: string, img_preview: string, img_full: string, relationships: { belongsTo: Category } }
+    Models\Order: { user_name: string, user_phone: string, template_id: 'id foreign', date: date, relationships: { belongsTo: Template } }

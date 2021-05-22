@@ -1,0 +1,25 @@
+models:
+  Models\Category:
+    title: string
+    parent_id: id foreign:categories nullable
+    relationships:
+      hasMany: Template
+
+  Models\Template:
+    title: string
+    category_id: id foreign
+    link: string
+    img_preview: string
+    img_full: string
+    relationships:
+      belongsTo: Category
+
+  Models\Order:
+    user_name: string
+    user_phone: string
+    template_id: id foreign
+    date: date
+    relationships:
+      belongsTo: Template
+
+seeders: Category, Template, Order
